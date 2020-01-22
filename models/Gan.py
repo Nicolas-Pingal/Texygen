@@ -14,13 +14,19 @@ class Gan:
         self.sess = init_sess()
         self.metrics = list()
         self.epoch = 0
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        self.pre_epoch_num = 1
+        self.adversarial_epoch_num = 1
         self.log = None
         self.reward = None
+        self.oracle_file = 'save/qoracle.txt'
+        self.generator_file = 'save/qgenerator.txt'
+        self.test_file = 'save/qtest_file.txt'
 
     def set_oracle(self, oracle):
         self.oracle = oracle
+
+    def set_output_file(self, test_file):
+        self.test_file = test_file
 
     def set_generator(self, generator):
         self.generator = generator

@@ -31,9 +31,9 @@ class Seqgan(Gan):
         self.generate_num = 128
         self.start_token = 0
 
-        self.oracle_file = 'save/oracle.txt'
-        self.generator_file = 'save/generator.txt'
-        self.test_file = 'save/test_file.txt'
+        #self.oracle_file = 'save/oracle.txt'
+        #self.generator_file = 'save/generator.txt'
+        #self.test_file = 'save/test_file.txt'
 
     def init_metric(self):
         nll = Nll(data_loader=self.oracle_data_loader, rnn=self.oracle, sess=self.sess)
@@ -105,8 +105,8 @@ class Seqgan(Gan):
         self.init_metric()
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-seqgan.csv', 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
@@ -204,8 +204,8 @@ class Seqgan(Gan):
         self.init_cfg_metric(grammar=cfg_grammar)
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-seqgan-cfg.csv', 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -308,8 +308,8 @@ class Seqgan(Gan):
 
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-seqgan-real.csv', 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
