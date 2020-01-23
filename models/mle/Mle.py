@@ -26,9 +26,9 @@ class Mle(Gan):
         self.generate_num = 128
         self.start_token = 0
 
-        self.oracle_file = 'save/oracle.txt'
-        self.generator_file = 'save/generator.txt'
-        self.test_file = 'save/test_file.txt'
+        #self.oracle_file = 'save/oracle.txt'
+        #self.generator_file = 'save/generator.txt'
+        #self.test_file = 'save/test_file.txt'
 
     def init_oracle_trainng(self, oracle=None):
         if oracle is None:
@@ -92,7 +92,7 @@ class Mle(Gan):
         self.init_oracle_trainng()
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
+        #self.pre_epoch_num = 80
         self.log = open('experiment-log-mle.csv', 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)

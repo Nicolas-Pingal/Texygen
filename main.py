@@ -51,8 +51,15 @@ def set_training(gan, training_method):
 
 
 def parse_cmd(argv):
+    # -h: Help
+    # -g: gan type
+    # -t: data type
+    # -d: data path
+    # -o: output path
+    # -p: pre-training epochs
+    # -a: adversarial training epochs
     try:
-        opts, args = getopt.getopt(argv, "hg:t:d:")
+        opts, args = getopt.getopt(argv, "hg:t:d:o:p:a:")
 
         opt_arg = dict(opts)
         if '-h' in opt_arg.keys():
@@ -65,6 +72,15 @@ def parse_cmd(argv):
             gan = set_gan('mle')
         else:
             gan = set_gan(opt_arg['-g'])
+
+            if '-o' in opt_arg.keys():
+                gan.set_output_file(opt_arg['-o'])
+            if '-p' in opt_arg.keys():
+                gan.set_pre_epoch_num(int(opt_arg['-p']))
+            if '-a' in opt_arg.keys():
+                gan.set_adversarial_epoch_num(int(opt_arg['-a']))
+
+
         if not '-t' in opt_arg.keys():
             gan.train_oracle()
         else:

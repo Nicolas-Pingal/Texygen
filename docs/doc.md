@@ -4,7 +4,7 @@
 
 ```bash 
 #usage:
-python main.py -g <GAN type> -t <training method> -d <data location>
+python main.py -g <GAN type> -t <training method> -d <data location> -o <output path> -p <pre-training epochs> -a <adversarial training epochs>
   -g <GAN type>  
     specify the GAN type in the experiment
     <GAN type> = seqgan | maligan | rankgan | leakgan | gsgan | textgan | mle
@@ -13,9 +13,18 @@ python main.py -g <GAN type> -t <training method> -d <data location>
     <training method> = oracle | cfg | real
     default is oracle
   -d <data location>
-    use user's own dataset
-    only avaiable with real data training 
+    use user\'s own dataset
+    only available with real data training
     default is 'data/image_coco.txt'
+  -o <output path>
+    specify the output path for the test file generated
+    default is 'save/test_file.txt'
+  -p <pre-training epochs>
+    specify the number of pre-training epochs
+    default is 80
+  -a <adversarial training epochs>
+    specify the number of adversarial training epochs
+    default is 100
 ```
 
 ### Quick tutorial

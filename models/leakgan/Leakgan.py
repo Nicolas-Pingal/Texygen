@@ -55,13 +55,13 @@ class Leakgan(Gan):
         self.vocab_size = 20
         self.emb_dim = 32
         self.hidden_dim = 32
-        flags = tf.app.flags
-        FLAGS = flags.FLAGS
-        flags.DEFINE_boolean('restore', False, 'Training or testing a model')
-        flags.DEFINE_boolean('resD', False, 'Training or testing a D model')
-        flags.DEFINE_integer('length', 20, 'The length of toy data')
-        flags.DEFINE_string('model', "", 'Model NAME')
-        self.sequence_length = FLAGS.length
+        #flags = tf.app.flags
+        #FLAGS = flags.FLAGS
+        #flags.DEFINE_boolean('restore', False, 'Training or testing a model')
+        #flags.DEFINE_boolean('resD', False, 'Training or testing a D model')
+        #flags.DEFINE_integer('length', 20, 'The length of toy data')
+        #flags.DEFINE_string('model', "", 'Model NAME')
+        self.sequence_length = 20
         self.filter_size = [2, 3]
         self.num_filters = [100, 200]
         self.l2_reg_lambda = 0.2
@@ -72,9 +72,9 @@ class Leakgan(Gan):
         self.dis_embedding_dim = 64
         self.goal_size = 16
 
-        self.oracle_file = 'save/oracle.txt'
-        self.generator_file = 'save/generator.txt'
-        self.test_file = 'save/test_file.txt'
+        #self.oracle_file = 'save/oracle.txt'
+        #self.generator_file = 'save/generator.txt'
+        #self.test_file = 'save/test_file.txt'
 
     def init_oracle_trainng(self, oracle=None):
         goal_out_size = sum(self.num_filters)
@@ -158,8 +158,8 @@ class Leakgan(Gan):
         self.init_metric()
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-leakgan.csv', 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples_gen(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
@@ -293,8 +293,8 @@ class Leakgan(Gan):
         self.init_cfg_metric(grammar=cfg_grammar)
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-leakganbasic-cfg.csv', 'w')
         generate_samples_gen(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -420,8 +420,8 @@ class Leakgan(Gan):
 
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-leakgan-real.csv', 'w')
         generate_samples_gen(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
