@@ -39,6 +39,8 @@ Or just type `pip install -r requirements.txt` in your terminal.
 
 ## Implemented Models and Original Papers
 
+* **Texygen** - [Texygen: A Benchmarking Platform for Text Generation Models](https://arxiv.org/abs/1802.01886)
+
 * **SeqGAN** -  [SeqGAN: Sequence Generative Adversarial Nets with Policy Gradient](https://arxiv.org/abs/1609.05473)
 
 * **MaliGAN** - [Maximum-Likelihood Augmented Discrete Generative Adversarial Networks](https://arxiv.org/abs/1702.07983)
