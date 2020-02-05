@@ -57,7 +57,7 @@ class Seqgan(Gan):
                 self.discriminator.input_x: x_batch,
                 self.discriminator.input_y: y_batch,
             }
-            loss,_ = self.sess.run([self.discriminator.d_loss, self.discriminator.train_op], feed)
+            loss = self.sess.run([self.discriminator.d_loss, self.discriminator.train_op], feed)
             print(loss)
 
     def evaluate(self):
@@ -107,7 +107,7 @@ class Seqgan(Gan):
 
         #self.pre_epoch_num = 80
         #self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-seqgan.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -206,7 +206,8 @@ class Seqgan(Gan):
 
         #self.pre_epoch_num = 80
         #self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-seqgan-cfg.csv', 'w')
+        #self.log = open('experiment-log-seqgan-cfg.csv', 'w')self.log = open('experiment-log-seqgan-cfg.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
         self.oracle_data_loader.create_batches(self.generator_file)
@@ -310,7 +311,7 @@ class Seqgan(Gan):
 
         #self.pre_epoch_num = 80
         #self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-seqgan-real.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
 

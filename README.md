@@ -1,10 +1,31 @@
-<h1><img src="docs/fig/texygen-01.png" width="250"></h1>
-
-Texygen is a benchmarking platform to support research on open-domain text generation models. Texygen has not only implemented a majority of text generation models, but also covered a set of metrics that evaluate the diversity, the quality and the consistency of the generated texts. The Texygen platform could help standardize the research on text generation and facilitate the sharing of fine-tuned open-source implementations among researchers for their work.  As a consequence, this would help in improving the reproductivity and reliability of future research work in text generation.
-
-For more details, please refer to our SIGIR 2018 paper: [Texygen: A Benchmarking Platform for Text Generation Models](https://arxiv.org/abs/1802.01886) by Yaoming Zhu et al.
-
-Should you have any questions and enquiries, please feel free to contact Yaoming Zhu (ym-zhu [AT] outlook.com) and [Weinan Zhang](http://wnzhang.net) (wnzhang [AT] sjtu.edu.cn).
+Variant of Texygen created by Nicolas Pingal for MQP paper link here. More arguments have been added and some functionality has been implemented.
+```bash
+#usage:
+python main.py -g <GAN type> -t <training method> -d <data location> -o <output path> -p <pre-training epochs> -a <adversarial training epochs> -c <csv output>
+  -g <GAN type>
+    specify the GAN type in the experiment
+    <GAN type> = seqgan | maligan | rankgan | leakgan | gsgan | textgan | mle
+  -t <training method>
+    specify the traning method in the experiment
+    <training method> = oracle | cfg | real
+    default is oracle
+  -d <data location>
+    use user\'s own dataset
+    only available with real data training
+    default is 'data/image_coco.txt'
+  -o <output path>
+    specify the output path for the test file generated
+    default is 'save/test_file.txt'
+  -p <pre-training epochs>
+    specify the number of pre-training epochs
+    default is 80
+  -a <adversarial training epochs>
+    specify the number of adversarial training epochs
+    default is 100
+  -c <csv output>
+    specify the csv output path
+    default is (gan type)-experiment-log.csv
+```
 
 ## Requirement
 We suggest you run the platform under Python 3.6+ with following libs:
@@ -30,47 +51,4 @@ Or just type `pip install -r requirements.txt` in your terminal.
  
 * **GSGAN** - [GANS for Sequences of Discrete Elements with the Gumbel-softmax Distribution](https://arxiv.org/abs/1611.04051)
 
-
-## Get Started
-
-```bash
-git clone https://github.com/geek-ai/Texygen.git
-cd Texygen
-# run SeqGAN with default setting
-python3 main.py
-```
-More detailed documentation for the platform and code setup is provided [here](docs/doc.md).
-
-
-## Evaluation Results
-
-BLEU on image COCO caption test dataset:
-
-|       | SeqGAN | MaliGAN | RankGAN | LeakGAN | TextGAN      | MLE |
-|-------|--------|---------|---------|---------|--------------|--------------|
-| BLEU2 | 0.745  | 0.673   | 0.743   | 0.746   | 0.593        | 0.731        |
-| BLEU3 | 0.498  | 0.432   | 0.467   | 0.528   | 0.463        | 0.497        |
-| BLEU4 | 0.294  | 0.257   | 0.264   | 0.355   | 0.277        | 0.305        |
-| BLEU5 | 0.180  | 0.159   | 0.156   | 0.230   | 0.207        | 0.189        |
-
-Mode Collapse (Self-BLEU):
-
-|            | SeqGAN | MaliGAN | RankGAN | LeakGAN | TextGAN       | MLE  |
-|------------|--------|---------|---------|---------|---------------|--------------|
-| S-BLEU2      | 0.950  | 0.918   | 0.959   | 0.966   | 0.942         |0.916         |
-| S-BLEU3      | 0.840  | 0.781   | 0.882   | 0.913   | 0.931         |0.769         |
-| S-BLEU4      | 0.670  | 0.606   | 0.762   | 0.848   | 0.804         |0.583         |
-| S-BLEU5      | 0.489  | 0.437   | 0.618   | 0.780   | 0.746         |0.408         |
-
-More detailed benchmark settings and evaluation results are provided [here](docs/evaluation.md).
-
-## Reference
-```bash
-@article{zhu2018texygen,
-  title={Texygen: A Benchmarking Platform for Text Generation Models},
-  author={Zhu, Yaoming and Lu, Sidi and Zheng, Lei and Guo, Jiaxian and Zhang, Weinan and Wang, Jun and Yu, Yong},
-  journal={SIGIR},
-  year={2018}
-}
-```
 

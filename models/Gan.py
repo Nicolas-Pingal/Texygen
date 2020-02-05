@@ -21,6 +21,7 @@ class Gan:
         self.oracle_file = 'save/oracle.txt'
         self.generator_file = 'save/generator.txt'
         self.test_file = 'save/test_file.txt'
+        self.csv_file = 'type_experiment_log.csv'
 
     def set_oracle(self, oracle):
         self.oracle = oracle
@@ -36,6 +37,9 @@ class Gan:
 
     def set_generator(self, generator):
         self.generator = generator
+
+    def set_csv_file(self, csv_file):
+        self.csv_file = csv_file
 
     def set_discriminator(self, discriminator):
         self.discriminator = discriminator
@@ -56,8 +60,9 @@ class Gan:
 
     def reset_epoch(self):
         # current not in use
-        return
         self.epoch = 0
+        return
+
 
     def evaluate(self):
         from time import time

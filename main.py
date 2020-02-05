@@ -59,7 +59,7 @@ def parse_cmd(argv):
     # -p: pre-training epochs
     # -a: adversarial training epochs
     try:
-        opts, args = getopt.getopt(argv, "hg:t:d:o:p:a:")
+        opts, args = getopt.getopt(argv, "hg:t:d:o:p:a:c:")
 
         opt_arg = dict(opts)
         if '-h' in opt_arg.keys():
@@ -79,6 +79,10 @@ def parse_cmd(argv):
                 gan.set_pre_epoch_num(int(opt_arg['-p']))
             if '-a' in opt_arg.keys():
                 gan.set_adversarial_epoch_num(int(opt_arg['-a']))
+            if '-c' in opt_arg.keys():
+                gan.set_csv_file(opt_arg['-c'])
+            else:
+                gan.set_csv_file(opt_arg['-g'] + '-experiment-log.csv')
 
 
         if not '-t' in opt_arg.keys():
