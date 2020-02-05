@@ -26,8 +26,8 @@ class Mle(Gan):
         self.generate_num = 128
         self.start_token = 0
 
-        #self.oracle_file = 'save/oracle.txt'
-        #self.generator_file = 'save/generator.txt'
+        self.oracle_file = 'save/oracle.txt'
+        self.generator_file = 'save/generator.txt'
         #self.test_file = 'save/test_file.txt'
 
     def init_oracle_trainng(self, oracle=None):
