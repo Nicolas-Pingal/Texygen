@@ -93,7 +93,8 @@ class Mle(Gan):
         self.sess.run(tf.global_variables_initializer())
 
         #self.pre_epoch_num = 80
-        self.log = open('experiment-log-mle.csv', 'w')
+        #self.log = open('experiment-log-mle.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -151,7 +152,9 @@ class Mle(Gan):
 
         self.pre_epoch_num = 80
         self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-mle-real.csv', 'w')
+        #self.log = open('experiment-log-mle-real.csv', 'w')
+        self.log = open(self.csv_file, 'w')
+
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
 

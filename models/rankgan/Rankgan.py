@@ -103,7 +103,8 @@ class Rankgan(Gan):
         self.sess.run(tf.global_variables_initializer())
         #self.pre_epoch_num = 80
         #self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-rankgan.csv', 'w')
+        #self.log = open('experiment-log-rankgan.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.oracle, self.batch_size, self.generate_num, self.oracle_file)
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
@@ -209,6 +210,7 @@ class Rankgan(Gan):
         #self.pre_epoch_num = 80
         #self.adversarial_epoch_num = 100
         self.log = open('experiment-log-rankgan-cfg.csv', 'w')
+        #self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
         self.oracle_data_loader.create_batches(self.generator_file)
@@ -311,7 +313,8 @@ class Rankgan(Gan):
 
         self.pre_epoch_num = 80
         self.adversarial_epoch_num = 100
-        self.log = open('experiment-log-rankgan-real.csv', 'w')
+        #self.log = open('experiment-log-rankgan-real.csv', 'w')
+        self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)
         self.gen_data_loader.create_batches(self.oracle_file)
 
