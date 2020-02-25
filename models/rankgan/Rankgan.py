@@ -311,8 +311,8 @@ class Rankgan(Gan):
 
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         #self.log = open('experiment-log-rankgan-real.csv', 'w')
         self.log = open(self.csv_file, 'w')
         generate_samples(self.sess, self.generator, self.batch_size, self.generate_num, self.generator_file)

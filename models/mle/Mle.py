@@ -150,8 +150,8 @@ class Mle(Gan):
 
         self.sess.run(tf.global_variables_initializer())
 
-        self.pre_epoch_num = 80
-        self.adversarial_epoch_num = 100
+        #self.pre_epoch_num = 80
+        #self.adversarial_epoch_num = 100
         #self.log = open('experiment-log-mle-real.csv', 'w')
         self.log = open(self.csv_file, 'w')
 
